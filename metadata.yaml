@@ -1,0 +1,45 @@
+_repo: Flying-Machines--Construction-and-Operation--13-A-Practical-Book-Which-Shows-in-Illustrations-W__907
+_version: 0.0.1
+creator:
+  authors:
+  - agent_name: Chanute, Octave
+    alias: Chanute, O. (Octave)
+    birthdate: 1832
+    deathdate: 1910
+    gutenberg_agent_id: '466'
+    url: http://www.gutenberg.org/2009/agents/466
+    wikipedia: http://en.wikipedia.org/wiki/Octave_Chanute
+  - agent_name: Russell, Thomas Herbert
+    aliases:
+    - Herbert, Thomas
+    - Russel, Thomas H. (Thomas Herbert)
+    - Russell, T. H. (Thomas Herbert)
+    birthdate: 1862
+    deathdate: 1947
+    gutenberg_agent_id: '465'
+    url: http://www.gutenberg.org/2009/agents/465
+  - agent_name: Jackman, William J. (William James)
+    aliases:
+    - Jackman, W. J. (William James)
+    - Jackman, William James
+    birthdate: 1850
+    gutenberg_agent_id: '464'
+    url: http://www.gutenberg.org/2009/agents/464
+description: ''
+gutenberg_issued: '1997-05-01'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '907'
+language: en
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcc 'TL'
+- !lcsh 'Flying-machines'
+- !lcsh 'Aeronautics'
+- GITenberg
+title: "Flying Machines: Construction and Operation\r\nA Practical Book Which Shows,\
+  \ in Illustrations, Working Plans and Text, How to Build and Navigate the Modern\
+  \ Airship"
+url: http://www.gutenberg.org/ebooks/907
