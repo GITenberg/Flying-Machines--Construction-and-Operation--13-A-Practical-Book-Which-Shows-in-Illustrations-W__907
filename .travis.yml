@@ -1,0 +1,61 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo pip install git+https://github.com/gitenberg-dev/gitberg
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+branches:
+  only:
+  - master
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: DXXhoG6GGSHCuQaC6vBKKSb7t1dVWlX6dK0gWVP3GNX9QkcwvvUKLvt1VyNd3VGUtHxXWu3E/T2G4f7B3IKpl1nivJxdVwv2sTyvzZA4fTgQkLhzoLkRedb4X4KbEEYyxJQJpa+TR7KsW6EVbtppb3zgMIPYJakGMZ2+7f2RyXpy8aJpPtEmguhsvxpCj3YJwRoPqA89TqX+wcVLILefBCBkQqU1T7x3ftbXG6+nXWfk4M6ltYILD1jDCbE++ifI8I0T0cU4BerLe3t2MO61axR/QtD7OPfTUq2bfjkJ9zaEIhgNHRpUN7TI6dFLs0Amdznj6yu/hrUSTCGii89W6VNAiOSu1hYrFEOasw+LHYDSqjqrtclDWyQweI1Fe1LJ1FckMed3t64Rb/LaEUJHXofiCJ+PGkvLlCflH/1lG7MpD7tOaPwqVX9Z7OUq6mC7V19uSDmMTy0a+rQz7+vO0LDEIIaWIW8wKaudMsU3c/V0Opu0QcrHhTX8KuedFlWOkY6ZTv1WeSPJUVkmXrInwi6IYyBlf0o+Dd2LFPyUDUYZaltKt4w5VCBR3PQ0cVQ4cjt6urUGbbznrWbm9MBLidFCdUQYLRO2PlHOOIN5yaNddPm2EXZRM1c+8ZW3e0oWDEOnIujqO1B3R8g9uSfXRXg0HnxATvRD+MOpjMD0ZC8=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  "on":
+    repo: GITenberg/Flying-Machines--Construction-and-Operation--13-A-Practical-Book-Which-Shows-in-Illustrations-W__907
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
